@@ -1,0 +1,9 @@
+# Dependências do Node (nunca sobem)
+node_modules/
+
+# Arquivos locais/pessoais
+src/passos.txt
+
+# Logs e arquivos do sistema
+npm-debug.log*
+.DS_Store

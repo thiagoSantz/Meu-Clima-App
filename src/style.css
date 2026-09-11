@@ -1,0 +1,453 @@
+:root {
+  --cor-borda: rgba(134, 134, 134, 0.177);
+  --cor-fonte2: rgba(255, 255, 255, 0.408);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  /*Tira as bordas brancas*/
+  margin: 0;
+  font-weight: 600;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body.modal-aberto,
+html.modal-aberto {
+  overflow: hidden;
+}
+
+/****************************************************/
+/* 1. Definição da animação de rotação */
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.conteiner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.81);
+  backdrop-filter: blur(5px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 2. Removido o espaço para selecionar o próprio container */
+.conteiner.escondido {
+  display: none;
+}
+
+.carregando {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #355ade; /* Cor da parte acesa */
+  border-radius: 50%;
+  animation: girar 1s linear infinite;
+}
+
+/****************************************************/
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* Faz a . ocupar a tela inteira */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 900;
+
+  backdrop-filter: blur(34px);
+}
+
+.modal.oculto {
+  display: none;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1.5rem;
+  /**/
+}
+
+/****************************************************/
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* Faz a . ocupar a tela inteira */
+  min-height: 100vh;
+  width: 100%;
+
+  color: white;
+  background: linear-gradient(135deg, #13152d, #110d2d);
+}
+
+/****************************************************/
+.header {
+  display: flex;
+  align-items: center;
+  width: 80%; /* Define a largura do topo */
+  border-bottom: 2px solid var(--cor-borda);
+  padding: 2rem 0 0 0;
+}
+
+.titulo {
+  font-size: x-large;
+}
+
+.ttl-app {
+  font-size: xx-large;
+  letter-spacing: -0.04em;
+  position: relative; /* Cria a referência para o ícone se posicionar */
+  display: inline-block; /* Faz o container ter exatamente o tamanho do texto */
+  z-index: 1;
+}
+
+.ttl-app::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(
+    -55%,
+    -70%
+  ); /* Centraliza o ícone exatamente no meio do texto */
+
+  width: 100px; /* Ajuste a largura do ícone */
+  height: 100px; /* Ajuste a altura do ícone */
+
+  background-image: url("icons/mostly-clear-day-drizzle.svg"); /* Caminho do ícone que preferir */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  z-index: -1; /* Coloca o ícone atrás do texto */
+  opacity: 0.6; /* Transparência para o texto continuar legível */
+}
+
+.ttl-destaque {
+  color: rgb(103, 202, 255);
+  font-weight: 900;
+}
+
+.ttl-cidade {
+  text-transform: uppercase;
+  color: rgb(138, 165, 255);
+  font-weight: 900;
+}
+
+.input-botao {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  width: 400px;
+  height: 48px; /* Altura fixa para travar o alinhamento */
+  background: rgba(78, 78, 78, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  overflow: hidden; /* CORTA o botão no formato arredondado da borda */
+}
+
+.inpt-busca {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  padding: 0rem 1.2rem;
+  font-size: 15px;
+}
+
+.botao {
+  border: none;
+  background: transparent;
+  color: white;
+  padding: 0.5rem;
+  font-weight: 500;
+  font-size: large;
+  cursor: pointer;
+}
+
+/* Estilo base dos botões de temperatura */
+.btn-temp {
+  border-radius: 8px; /* Curvatura levemente arredondada */
+  padding: 0.3rem 0.7rem; /* Espaço para o fundo não colar no texto */
+  transition: all 0.2s ease; /* Suaviza a troca de estados */
+  border: 1px solid rgba(185, 184, 184, 0.178); /* Borda sutil combinando */
+}
+
+/* Estado SELECIONADO (Ativo) */
+.btn-temp.active {
+  color: rgb(255, 114, 114);
+  background-color: rgba(
+    114,
+    130,
+    255,
+    0.15
+  ); /* Fundo avermelhado translúcido */
+  border: 1px solid rgba(185, 184, 184, 0.474); /* Borda sutil combinando */
+}
+
+/* Efeito ao passar o mouse no botão NÃO selecionado */
+.btn-temp:not(.active):hover {
+  background-color: rgba(255, 255, 255, 0.08); /* Brilho sutil no hover */
+}
+
+.btn-busca {
+  width: 55px;
+  height: 100%;
+  border: none;
+  background: rgb(53, 90, 221);
+  color: white;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  /**/
+  transition:
+    transform 0.1s ease,
+    background-color 0.2s ease;
+}
+
+.btn-busca:hover {
+  background: rgb(77, 113, 243); /* Efeito sutil ao passar o mouse */
+}
+
+.btn-busca:active {
+  background-color: rgb(43, 71, 173); /* Escurece a cor principal */
+}
+
+/* Estado de Foco (para navegação via tecla TAB) */
+.btn-busca:focus-visible {
+  outline: 2px solid white;
+  outline-offset: -2px;
+}
+
+/* Remove a cor de fundo e mantém o texto branco no autocompletar do navegador */
+.inpt-busca:-webkit-autofill,
+.inpt-busca:-webkit-autofill:hover,
+.inpt-busca:-webkit-autofill:focus,
+.inpt-busca:-webkit-autofill:active {
+  -webkit-text-fill-color: white !important;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/****************************************************/
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  padding: 2rem 0 0 0;
+}
+
+/****************************************************/
+.sessao-clima {
+  display: flex;
+  flex-direction: column;
+}
+
+.sessao-clima p {
+  margin: 0.25em;
+}
+
+.titulo-toggle {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Define a largura do topo */
+  padding-bottom: 2rem;
+}
+
+.botao-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #777b86;
+  font-size: 25px;
+  margin-left: auto;
+}
+
+/**************************/
+.clima-dia-atual {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 2px solid var(--cor-borda);
+  min-height: 210px;
+}
+
+.icone-temperatura,
+.clima-detalhes,
+.clima-descricao {
+  flex: 1 1 0px;
+  min-width: 0; /* Impede estouro de conteúdo */
+}
+
+.icone-temperatura {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#clima-temperatura {
+  font-size: 5rem;
+  font-weight: 100;
+}
+
+/**************************/
+.clima-detalhes {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--cor-borda);
+  padding-left: 2rem;
+}
+
+.clima-detalhes p {
+  color: var(--cor-fonte2);
+}
+
+.cx-texto {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/**************************/
+.clima-descricao {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end; /* Empurra o .div-interno para a extrema direita */
+}
+
+.div-interno {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Mantém todo o texto interno alinhado à esquerda */
+  text-align: left;
+  width: 220px; /* Largura fixa: a caixa nunca muda de tamanho e não desloca o texto */
+}
+
+.ttl-clima {
+  color: var(--cor-fonte2);
+  text-align: left;
+}
+
+#clima-condicao {
+  color: var(--cor-fonte2);
+  white-space: normal; /* Garante a quebra automática de linha */
+  overflow-wrap: break-word; /* Quebra palavras muito longas se necessário */
+  width: 100%;
+}
+
+/****************************************************/
+.sessao-previsao {
+  display: flex;
+  padding: 1rem 0rem;
+  gap: 0.5rem;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--cor-borda);
+}
+
+.previsao-dia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0; /* permite que o flex item encolha abaixo da largura do texto */
+  padding: 1rem 0.25rem; /* Reduzido de 2rem para 0.25rem nas laterais */
+  /**/
+  border-radius: 16px;
+  opacity: 1; /* O conteúdo (texto/ícone) fica 100% visível, mas sem container */
+  transition: all 0.3s ease; /* Transição suave para os estados de interação */
+}
+
+.previsao-temp-min {
+  color: var(--cor-fonte2);
+}
+
+/* 2. Estados de Interação (Aceso: Hover, Clicado e Ativo) */
+.previsao-dia:hover,              /* Passar o mouse */
+.previsao-dia.ativo,              /* Classe 'ativo' aplicada via JS (dia selecionado) */
+.previsao-dia:active {
+  /* Exatamente no momento do clique */
+  /* Aplicamos o efeito de envolto arredondado e semitransparente */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.048
+  ); /* Fundo branco com 15% de opacidade */
+  border-color: rgba(255, 255, 255, 0.3); /* Borda sutil */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Leve profundidade */
+  transform: translateY(-2px); /* Pequena elevação para dar feedback */
+}
+
+/* 3. Ajuste sutil para o momento exato do clique (:active) para simular pressão */
+.previsao-dia:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.previsao-dia.ativo {
+  background-color: rgba(255, 255, 255, 0.107);
+}
+
+.ttl-previsao {
+  font-size: large;
+}
+
+.temp-media {
+  display: flex;
+  gap: 0.4rem; /* Reduzido de 1rem para 0.4rem para caber em telas menores */
+  font-size: 0.95rem;
+}
+
+/****************************************************/
+.sessao-resumo {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0rem 1rem 0;
+}
+
+#clima-resumo {
+  color: var(--cor-fonte2);
+}
+
+/***************************************************/

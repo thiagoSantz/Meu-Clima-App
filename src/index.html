@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App Clima</title>
+  </head>
+  <body>
+    <!---->
+    <div class="main">
+      <!---->
+      <div class="conteiner escondido">
+        <span class="spinner"></span>
+        <span class="carregando">Carregando</span>
+      </div>
+
+      <!---->
+      <div class="modal">
+        <form class="formulario">
+          <h1 class="ttl-app">Meu <span class="ttl-destaque">C</span>lima</h1>
+          <div class="input-botao">
+            <input
+              type="text"
+              class="inpt-busca"
+              id="inpt-busca-modal"
+              placeholder="Busque aqui sua cidade.."
+            />
+            <button class="botao btn-busca" id="botao-modal">
+              <!---->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <!---->
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!---->
+      <div class="header">
+        <h1 class="ttl-app">Meu <span class="ttl-destaque">C</span>lima</h1>
+        <div class="input-botao">
+          <input
+            type="text"
+            class="inpt-busca"
+            id="inpt-busca-header"
+            placeholder="Busca aqui"
+          />
+          <button class="botao btn-busca" id="botao-header">
+            <!---->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <!---->
+          </button>
+        </div>
+      </div>
+      <!---->
+
+      <div class="conteudo">
+        <!---->
+
+        <div class="sessao-clima">
+          <!---->
+          <div class="titulo-toggle">
+            <span class="titulo ttl-cidade">* Cidade Atual</span>
+            <div class="botao-toggle">
+              <button class="botao btn-temp active">C*</button>
+              <span class="travessao"> | </span>
+              <button class="botao btn-temp">F*</button>
+            </div>
+          </div>
+          <!---->
+
+          <div class="clima-dia-atual">
+            <!---->
+            <div class="icone-temperatura">
+              <span id="clima-icone">Icone</span>
+              <span id="clima-temperatura">Temperatura</span>
+              <span id="clima-unidade">Unidade</span>
+            </div>
+
+            <div class="clima-detalhes">
+              <div class="cx-texto">
+                <p>Precipitação :</p>
+                <span id="clima-precipitacao">x</span>
+              </div>
+              <div class="cx-texto">
+                <p>Humidade :</p>
+                <span id="clima-humidade">x</span>
+              </div>
+              <div class="cx-texto">
+                <p>Vento :</p>
+                <span id="clima-vento">x</span>
+              </div>
+            </div>
+
+            <div class="clima-descricao">
+              <div class="div-interno">
+                <p class="titulo ttl-clima">Clima:</p>
+                <p id="clima-dia">dia</p>
+                <p id="clima-data">data</p>
+                <p id="clima-condicao">condicao</p>
+              </div>
+            </div>
+            <!---->
+          </div>
+          <!---->
+        </div>
+
+        <!---->
+        <div class="sessao-previsao">
+          <!--      <div class="previsao-dia">
+            <span class="titulo ttl-previsao">Dia da previsão</span>
+            <span id="previsao-icone">icone</span>
+            <div class="temp-media">
+              <span id="previsao-temp-max">max</span>
+              <span id="previsao-temp-min">min</span>
+            </div>
+          </div>
+
+          <div class="previsao-dia">
+            <span class="titulo ttl-previsao">Dia da previsão</span>
+            <span id="previsao-icone">icone</span>
+            <div class="temp-media">
+              <span id="previsao-temp-max">max</span>
+              <span id="previsao-temp-min">min</span>
+            </div>
+          </div>
+
+          <div class="previsao-dia">
+            <span class="titulo ttl-previsao">Dia da previsão</span>
+            <span id="previsao-icone">icone</span>
+            <div class="temp-media">
+              <span id="previsao-temp-max">max</span>
+              <span id="previsao-temp-min">min</span>
+            </div>
+          </div> -->
+        </div>
+        <!---->
+
+        <div class="sessao-resumo">
+          <span class="titulo ttl-resumo">Resumo Diario</span>
+          <p id="clima-resumo">Resumo aqui</p>
+        </div>
+        <!---->
+      </div>
+      <!---->
+    </div>
+  </body>
+</html>

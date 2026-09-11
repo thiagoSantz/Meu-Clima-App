@@ -1,0 +1,105 @@
+@media (max-width: 995px) {
+  .clima-dia-atual {
+    flex-wrap: wrap; /* ← Quebra para próxima linha */
+    padding-bottom: 2rem;
+  }
+  .icone-temperatura,
+  .clima-detalhes,
+  .clima-descricao {
+    flex: 1 1 45%; /* Cada um ocupa ~45%, força quebra */
+    min-width: 0;
+  }
+  .clima-descricao {
+    align-items: flex-start;
+    padding-left: 2rem;
+  }
+  .sessao-resumo {
+    padding-bottom: 1rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .input-botao {
+    width: 100%;
+    max-width: 370px;
+    margin: 0 auto;
+  }
+
+  .formulario {
+    width: 90%;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  /**********************************************/
+  .header {
+    flex-direction: column;
+    padding: 2.5rem 0 1.5rem 0;
+  }
+
+  .conteudo {
+    width: 80%;
+    padding-top: 1rem;
+  }
+
+  .titulo {
+    font-size: large;
+  }
+
+  .ttl-app {
+    font-size: x-large;
+  }
+
+  /**********************************************/
+
+  .clima-dia-atual {
+    flex-direction: column;
+    align-items: start;
+    padding: 0.5rem 0 1.5rem 0;
+    gap: 0.5rem;
+  }
+
+  .titulo-toggle {
+    padding-bottom: 0;
+  }
+
+  .clima-detalhes {
+    padding-left: 2rem;
+  }
+
+  .clima-descricao {
+    border-left: 1px solid var(--cor-borda);
+    padding-left: 2rem;
+  }
+
+  /**********************************************/
+
+  /* 1. Transforma a seção de previsão em um container com rolagem horizontal */
+  .sessao-previsao {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding: 1.2rem 0;
+
+    scroll-snap-type: x mandatory; /* Deixa o movimento de rolagem encaixar card por card */
+    /* Opcional: esconde a barra de rolagem no Chrome/Safari para ficar mais limpo */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .sessao-previsao::-webkit-scrollbar {
+    display: none; /* Chrome, Safari e Opera */
+  }
+
+  .ttl-previsao {
+    font-size: x-large;
+  }
+
+  .temp-media {
+    font-size: 1.2rem;
+  }
+
+  /* 2. Trava uma largura fixa para cada card não esmagar no celular */
+  .previsao-dia {
+    flex: 0 0 125px; /* Não cresce, não encolhe, largura exata de 105px */
+    scroll-snap-align: center;
+  }
+}
