@@ -48,12 +48,13 @@ Este projeto foi desenvolvido como parte dos estudos de desenvolvimento Web (tri
 ### Passo a passo
 
 **Clone o repositório:**
-   ```bash```
+
+```bash
     git clone [https://github.com/thiagoSantz/Meu-Clima-App.git](https://github.com/thiagoSantz/Meu-Clima-App.git)
     cd Meu-Clima-App 
     npm install
     npm start
-    ```bash```
+```
 
 ---
 
