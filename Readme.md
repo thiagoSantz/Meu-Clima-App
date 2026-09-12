@@ -1,8 +1,8 @@
 # 🌤️ Meu Clima App
 
 <p align="center">
-  <img src="src/imgPreview/desktop.png" alt="Preview Desktop" width="48%" />
-  <img src="src/imgPreview/mobile.png" alt="Preview Mobile" width="22%" />
+  <img src="src/imgPreview/desktop.png" alt="Preview Desktop"  />
+  <img src="src/imgPreview/mobile.png" alt="Preview Mobile"  />
 </p>
 
 <p align="center">
